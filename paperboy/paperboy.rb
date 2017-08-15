@@ -23,29 +23,23 @@ class Paperboy
     @minimum + (@experience / 2)
   end
 
-  # def experience
-  #   @experience = @experience + real_delivered
-  # end
-
   def paper_delivered(start_address, end_address)
-    # real_delivered = 0
     (end_address - start_address)  + 1
-    # if @experience == 0
   end
 
 
   def total_pay(deliver)
-      if deliver == quota
-      return total_pay = @minimum * @base_pay
+    if deliver == quota
+       @earnings += @minimum * @base_pay
     elsif deliver  < quota
-      return total_pay = deliver * @base_pay - @penalty
+       @earnings += deliver * @base_pay - @penalty
     else
-      return total_pay = (@minimum * @base_pay) + ((deliver - @minimum)*@bonus_pay)
+       @earnings = (@minimum * @base_pay) + ((deliver - @minimum) * @bonus_pay)
     end
   end
 
   def report
-    "I am #{@name}, I've been delivered #{quota} papers and I have earned $#{total_pay} so far!"
+    "I am #{@name}, I've been delivered #{quota} papers and I have earned $#{@earnings} so far!"
   end
 end
 
